@@ -9,7 +9,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import Proper.Xls_Reader;
 
 import com.*;
 import org.junit.After;
@@ -143,42 +142,8 @@ public class Booking_Page_Staging {
 }
             
 ArrayList<String> dataHolder = new ArrayList<String>();
- 
- /*public void xlsxreader(){
-     Xls_Reader datatable = new Xls_Reader("C:\\Users\\user\\Desktop\\import contact fomats\\Book1.xlsx");
-     int rowone = datatable.getRowCount("Sheet1");
-     int column = datatable.getColumnCount("Sheet1");
-     System.out.println("Column : ="+column);
-     System.out.println("Row Count: ="+rowone);	
-     ArrayList<String> dataHolder = new ArrayList<String>();
-     List<ArrayList<String>> finaldata = Arrays.asList(dataHolder);
-     System.out.println("final data ="+finaldata);
-     for(int i=1; i<=rowone;i++)
-     {
-        for(int j=0; j<column;j++)
-            dataHolder.add(datatable.getCellData("Sheet1", j, i));		          		    	      
-   }
-   	Iterator<ArrayList<String>> iterator = finaldata.iterator();
-      while (iterator.hasNext()) {
-        System.out.println("Iterator Next="+iterator.next());
-            	}
-
-            		System.out.println("#3 for advance");
-            		for (ArrayList<String> temp : finaldata) {
-            			System.out.println("temp= "+temp);
-            		}
-
-            		System.out.println("#4 while");
-            		int k = 0;
-            		while (k < finaldata.size()) {
-            			System.out.println(finaldata.get(k));
-            			k++;
-            		}
-            		
-             }
- */
-
 public ArrayList<String> aRowData(int rowNo){
+	//Change the file location based on the xlsx file location  
 		Xls_Reader datatable = new Xls_Reader("C:\\Users\\user\\Desktop\\import contact fomats\\Book1.xlsx");
 		int column = datatable.getColumnCount("Sheet1");
 		ArrayList<String> somrProblem= new ArrayList<String>();
