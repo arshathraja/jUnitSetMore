@@ -4,11 +4,8 @@ package Proper;
 import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import com.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,6 +21,8 @@ public class Booking_Page_Staging {
 	private WebDriver driver;
 	private String baseUrl;
 	private StringBuffer verificationErrors = new StringBuffer();
+
+
 	
 	@Before
 	public void setUp() throws Exception {
@@ -32,6 +31,7 @@ public class Booking_Page_Staging {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 	
+
 	
 	@Test
 	public void testNewtestcaseforsetmore() throws Exception {	
@@ -42,32 +42,36 @@ public class Booking_Page_Staging {
 		driver.findElement(By.xpath("//*[@id='sasikala test']")).click();		
 		driver.findElement(By.xpath("//*[@id='date']")).click();
 				//System.out.println("coming inside");
-				//System.out.println("inside j");							
-		if (isElementPresent( ) )	
-			dataHolder=	aRowData(k);
+				//System.out.println("inside j");
+		ArrayList<String> temp=null;
 		
-		if(dataHolder!=null&&dataHolder.size()>0) {
-		System.out.println("DATA HOLDER ="+dataHolder.get(k));		
-	    driver.findElement(By.xpath("//*[@id='first_name']")).sendKeys(dataHolder.get(1));
-	    driver.findElement(By.xpath("//*[@id='last_name']")).sendKeys(dataHolder.get(2));
-		driver.findElement(By.xpath("//*[@id='phone_num']")).sendKeys(dataHolder.get(3));
-		driver.findElement(By.xpath("//*[@id='email']")).sendKeys(dataHolder.get(4));
-		driver.findElement(By.xpath("//*[@id='address']")).sendKeys(dataHolder.get(5));
-		driver.findElement(By.xpath("//*[@id='city']")).sendKeys(dataHolder.get(6));
-		driver.findElement(By.xpath("//*[@id='state']")).sendKeys(dataHolder.get(7));
-		driver.findElement(By.xpath("//*[@id='zip']")).sendKeys(dataHolder.get(8));
-		driver.findElement(By.xpath("//*[@id='comments']")).sendKeys(dataHolder.get(9));		
+		if (isElementPresent( ) )	{
+			System.out.println("What row value here="+k);
+			temp=	aRowData(k);
+		    System.out.print("After Funtion: ="+temp);
+		if(temp!=null&&temp.size()>0) 
+			k++;
+		System.out.println("Will print rowNumber ="+temp.get(0));	
+	    driver.findElement(By.xpath("//*[@id='first_name']")).sendKeys(temp.get(0));
+	    driver.findElement(By.xpath("//*[@id='last_name']")).sendKeys(temp.get(1));
+		driver.findElement(By.xpath("//*[@id='phone_num']")).sendKeys(temp.get(2));
+		driver.findElement(By.xpath("//*[@id='email']")).sendKeys(temp.get(3));
+		driver.findElement(By.xpath("//*[@id='address']")).sendKeys(temp.get(4));
+		driver.findElement(By.xpath("//*[@id='city']")).sendKeys(temp.get(5));
+		driver.findElement(By.xpath("//*[@id='state']")).sendKeys(temp.get(6));
+		driver.findElement(By.xpath("//*[@id='zip']")).sendKeys(temp.get(7));
+		driver.findElement(By.xpath("//*[@id='comments']")).sendKeys(temp.get(8));		
 		driver.findElement(By.xpath("//*[@id='main_col']/div[2]/div/ul/li[4]/form/div/input")).click();
 		driver.findElement(By.xpath("//*[@id='main_col']/div[2]/div/ul/li[5]/div[4]/div[1]")).click();
-		k++;
+		
+		System.out.println("Before="+(--k)+"-After-"+(++k));
 		  }
 		}
 		catch(Exception e){
 			//System.out.println("After the booking");
 		e.printStackTrace();
 		}  
-
-}
+	}
 
 	@After
 	public void tearDown() throws Exception {
@@ -109,7 +113,7 @@ public class Booking_Page_Staging {
 					 WebElement dateprint = driver.findElement(By.className(lTimingsBookings));
 					 List<WebElement> dp = dateprint.findElements(By.tagName("a")); 
 					 for(WebElement tdElement : dp) { 
-					    System.out.println("Print available date"+tdElement.getText()); 				 
+//					    System.out.println("Print available date"+tdElement.getText()); 				 
 					    String[] splittingData=tdElement.getText().split(" ");
 					    if(splittingData.length==2){
 					    	//System.out.println("coming inside the split");
@@ -136,9 +140,9 @@ public class Booking_Page_Staging {
 				return true;
 }
             
- ArrayList<String> dataHolder = new ArrayList<String>();
+ArrayList<String> dataHolder = new ArrayList<String>();
  
- public void xlsxreader(){
+ /*public void xlsxreader(){
      Xls_Reader datatable = new Xls_Reader("C:\\Users\\user\\Desktop\\import contact fomats\\Book1.xlsx");
      int rowone = datatable.getRowCount("Sheet1");
      int column = datatable.getColumnCount("Sheet1");
@@ -147,6 +151,17 @@ public class Booking_Page_Staging {
      ArrayList<String> dataHolder = new ArrayList<String>();
      List<ArrayList<String>> finaldata = Arrays.asList(dataHolder);
      System.out.println("final data ="+finaldata);
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
      for(int i=1; i<=rowone;i++)
      {
         for(int j=0; j<column;j++)
@@ -170,19 +185,24 @@ public class Booking_Page_Staging {
             		}
             		
              }
- 
- public ArrayList<String> aRowData(int rowNo){
+ */
+
+public ArrayList<String> aRowData(int rowNo){
 		Xls_Reader datatable = new Xls_Reader("C:\\Users\\user\\Desktop\\import contact fomats\\Book1.xlsx");
 		int column = datatable.getColumnCount("Sheet1");
-		ArrayList<String> dataHolder= new ArrayList<String>();
-		for(int i=1; i<=rowNo;i++)
-		{
+		ArrayList<String> somrProblem= new ArrayList<String>();
+		somrProblem.clear();
+		if(somrProblem.isEmpty())
 			for(int j=0; j<column;j++)
+		{
 			{
-				dataHolder.add(datatable.getCellData("Sheet1", j, i));			
+				somrProblem.add(datatable.getCellData("Sheet1", j, rowNo));			
 			}
-	   }
-		return dataHolder;
+			
+	   }	
+		
+		System.out.println("["+rowNo+"]Total data b4re rtn--"+somrProblem);
+		return somrProblem;
 	}
 	
 }
